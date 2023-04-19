@@ -1,7 +1,8 @@
+import Main from "components/ui/Main";
 import React from "react";
 
 const App = () => {
-  return <div>ㅁㄴㅇㄴ</div>;
+  return <Main />;
 };
 
 export default App;
