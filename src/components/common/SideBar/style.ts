@@ -15,22 +15,3 @@ export const SideBar = styled.div`
   background-color: #f3f3f3;
   border-right: 2px solid #e8e8e8;
 `;
-
-export const MenuItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-`;
-
-export const MenuLink = styled.a`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  cursor: pointer;
-
-  /* color-ssam */
-  color: #000000;
-  &:hover {
-    color: #f36e67;
-  }
-`;
