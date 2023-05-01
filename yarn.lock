@@ -182,6 +182,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-seo@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "next-seo@npm:6.0.0"
+  peerDependencies:
+    next: ^8.1.1-canary.54 || >=9.0.0
+    react: ">=16.0.0"
+    react-dom: ">=16.0.0"
+  checksum: aa986b3731386bc91408df6bca09a9edc0cdd8a7730bcdc331f283ab50803a6d60047b685eeec4b11bde1660dbb792e3737e81ef05a65682323d0d07fa9edd85
+  languageName: node
+  linkType: hard
+
 "next@npm:13.3.4":
   version: 13.3.4
   resolution: "next@npm:13.3.4"
@@ -305,6 +316,7 @@ __metadata:
     "@types/react": 18.2.0
     "@types/react-dom": 18.2.1
     next: 13.3.4
+    next-seo: ^6.0.0
     react: 18.2.0
     react-dom: 18.2.0
     typescript: 5.0.4
