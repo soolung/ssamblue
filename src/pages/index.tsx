@@ -1,3 +1,4 @@
+import GlobalStyled from "@/styles/global";
 import { NextSeo } from "next-seo";
 
 interface SeoConfigInterface {
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <>
       <NextSeo {...SeoConfig} />
+      <GlobalStyled />
     </>
   );
 };
