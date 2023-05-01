@@ -12,7 +12,6 @@ const GlobalStyled = createGlobalStyle`
     }
     p {
         display: inline-block;
-        border: 1px solid black;
     }
     a{
       text-decoration: none;
