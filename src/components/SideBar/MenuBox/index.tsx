@@ -6,13 +6,13 @@ interface PropsInterface {
   title: string;
 }
 
-const MenuList = ({ children, title }: PropsInterface) => {
+const MenuBox = ({ children, title }: PropsInterface) => {
   return (
-    <S.MenuList>
+    <S.MenuBox>
       <S.Title>{title}</S.Title>
-      {children}
-    </S.MenuList>
+      <S.MenuList>{children}</S.MenuList>
+    </S.MenuBox>
   );
 };
 
-export default MenuList;
+export default MenuBox;
