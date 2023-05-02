@@ -2,6 +2,7 @@ import palette from "@/styles/palette";
 import styled from "styled-components";
 
 export const Header = styled.header`
+  z-index: 1;
   display: flex;
   align-items: center;
 
