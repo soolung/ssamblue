@@ -1,16 +1,17 @@
+import palette from "@/styles/palette";
 import * as S from "./style";
 
 interface PropsInterface {
   imoge: string;
-  text: string;
   onClick?: () => void;
+  name: string;
 }
 
-const MenuItem = ({ imoge, text, onClick }: PropsInterface) => {
+const MenuItem = ({ imoge, onClick, name }: PropsInterface) => {
   return (
     <S.MenuItem>
       {imoge}
-      <S.MenuLink onClick={onClick}>{text}</S.MenuLink>
+      <S.MenuLink onClick={onClick}>{name}</S.MenuLink>
     </S.MenuItem>
   );
 };
