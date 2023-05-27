@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import "@/styles/global.css";
 
 interface PropsType {
   children: ReactNode;
@@ -6,7 +7,7 @@ interface PropsType {
 
 const RootLayout = ({ children }: PropsType) => {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body>{children}</body>
     </html>
   );
