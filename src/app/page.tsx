@@ -1,5 +1,11 @@
+import AppLayout from '@/layouts/AppLayout';
+
 const Home = () => {
-  return <div>as</div>;
+  return (
+    <AppLayout>
+      <div>as</div>
+    </AppLayout>
+  );
 };
 
 export default Home;
