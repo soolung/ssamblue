@@ -22,10 +22,16 @@ const Header = () => {
 export default Header;
 
 const StyledHeader = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
   width: 100%;
   height: 60px;
   background-color: ${palette.MONO_WHITE};
