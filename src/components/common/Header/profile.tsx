@@ -8,7 +8,7 @@ interface PropsType {
 const Profile = ({ name }: PropsType) => {
   return (
     <StyledProfile>
-      <Text typo={'PARAGRAPH_MEDIUM'}>{name} 님</Text>
+      <Text typo={'PARAGRAPH_MEDIUM'}>{name} 선생님</Text>
       <Icon iconName={'ArrowDown'} size={'MEDIUM'}/>
     </StyledProfile>
   );
@@ -19,5 +19,6 @@ export default Profile;
 const StyledProfile = styled.div`
   display: flex;
   align-items: center;
+  gap: 4px;
   cursor: pointer;
 `;

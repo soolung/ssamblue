@@ -3,28 +3,35 @@
 import Header from "@/components/common/Header/header";
 import { ReactNode } from "react";
 import styled from "styled-components";
-import { palette } from '@k99hyerin/dj-simblue';
+import { palette, Text } from '@k99hyerin/dj-simblue';
+import SideBar from '@/components/common/SideBar/sidebar';
 
 interface PropsType {
   children: ReactNode;
   backgroundColor?: string;
+  title: string;
 }
 
-const AppLayout = ({ children, backgroundColor }: PropsType) => {
+const AppLayout = ({ children, backgroundColor, title }: PropsType) => {
   return (
     <>
       <Header />
-      <StyledAppLayout style={{ backgroundColor }}>{children}</StyledAppLayout>
+      <SideBar />
+      <StyledAppLayout style={{ backgroundColor }}>
+        <Text typo={'HEADING_LARGE'}>{title}</Text>
+        {children}
+      </StyledAppLayout>
     </>
   );
 };
 
 export default AppLayout;
 
-const StyledAppLayout = styled.section`
+const StyledAppLayout = styled.main`
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
   background-color: ${palette.MONO_WHITE};
+  margin: 60px 0 0 325px;
+  padding: 54px 36px;
+  gap: 36px;
 `;
