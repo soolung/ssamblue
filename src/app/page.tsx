@@ -1,8 +1,8 @@
-import AppLayout from '@/layouts/AppLayout';
+import AppLayout from "@/layouts/AppLayout";
 
 const Home = () => {
   return (
-    <AppLayout>
+    <AppLayout title="메인">
       <div>as</div>
     </AppLayout>
   );
