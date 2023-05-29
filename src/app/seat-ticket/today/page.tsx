@@ -2,6 +2,8 @@
 
 import { TodayTableHeaderItemData } from "@/components/SeatTicket/data/TableHeaderItemData";
 import TableHeader from "@/components/SeatTicket/TableHeader";
+import TableItem from "@/components/SeatTicket/TableItem";
+import TableRow from "@/components/SeatTicket/TableRow";
 import AppLayout from "@/layouts/AppLayout";
 import styled from "styled-components";
 
@@ -11,6 +13,7 @@ const TodaySeatTicketPage = () => {
       <StyledSeatTicket>
         <Table>
           <TableHeader data={TodayTableHeaderItemData} />
+          {/* <TableRow></TableRow> */}
         </Table>
       </StyledSeatTicket>
     </AppLayout>
@@ -24,4 +27,6 @@ const StyledSeatTicket = styled.div`
   height: 100%;
 `;
 
-const Table = styled.div``;
+const Table = styled.div`
+  width: 100%;
+`;

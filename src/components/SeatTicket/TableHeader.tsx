@@ -14,7 +14,7 @@ const TableHeader = ({ data }: PropsType) => {
     <StyledTableHeader>
       {data &&
         data.map((item) => (
-          <TableHeaderItem itemLength={data.length}>
+          <TableHeaderItem dataLength={data.length}>
             {item.value}
           </TableHeaderItem>
         ))}
@@ -33,11 +33,11 @@ const StyledTableHeader = styled.div`
   border-bottom: 1px solid #e8e8e8;
 `;
 
-const TableHeaderItem = styled.div<{ itemLength: number }>`
+const TableHeaderItem = styled.div<{ dataLength: number }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / ${(props) => props.itemLength});
+  width: calc(100% / ${(props) => props.dataLength});
   height: 100%;
   background-color: #f3f3f3;
   font-weight: 500;
