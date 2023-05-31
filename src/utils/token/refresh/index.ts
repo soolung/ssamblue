@@ -1,4 +1,4 @@
-import { ACCESS_KEY, REFRESH_KEY } from "@/constants/token";
+import { ACCESS_KEY, REFRESH_KEY } from "@/constants/auth";
 import { useRouter } from "next/navigation";
 import { server } from "@/lib/axios";
 import { Storage } from "@/lib/storage";

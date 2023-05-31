@@ -1,4 +1,4 @@
-import { useLoginUserMutation } from "@/interfaces/auth/mutation";
+import { usePasswordLoginMutation } from "@/interfaces/auth/mutation";
 import { ChangeEvent, useState } from "react";
 import { loginUserParams } from '@/interfaces/auth/api';
 
@@ -13,10 +13,9 @@ export const useLogin = () => {
       ...data,
       [e.target.name]: e.target.value
     });
-    console.log(data);
   };
 
-  const mutation = useLoginUserMutation(data);
+  const mutation = usePasswordLoginMutation(data);
 
   return { data, handleData, mutation };
 };

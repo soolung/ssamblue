@@ -1,0 +1,1 @@
+export const GOOGLE_AUTH_LINK = 'GOOGLE_AUTH_LINK';

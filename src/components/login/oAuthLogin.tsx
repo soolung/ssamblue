@@ -1,18 +1,25 @@
 import { Button, Icon, SsamblueLogo } from '@k99hyerin/dj-simblue';
 import styled from 'styled-components';
 import ChangeLoginType from '@/components/login/changeLoginType';
+import { useQuery } from 'react-query';
+import { getGoogleAuthLink } from '@/interfaces/auth/api';
+import { GOOGLE_AUTH_LINK } from '@/constants/queryKey';
 
 interface PropsType {
   changeLoginType: (type: 'oauth' | 'password') => void;
 }
 
 const OAuthLogin = ({ changeLoginType }: PropsType) => {
+  const { data } = useQuery([GOOGLE_AUTH_LINK], getGoogleAuthLink, {});
+
   return (
     <Container>
       <SsamblueLogo size={'MEDIUM'} />
       <ContentContainer>
         <ButtonContainer>
-          <Button size={'LARGE'} color={'white'} text={'구글 학교 계정으로 로그인'}>
+          <Button size={'LARGE'} color={'white'} text={'학교 계정으로 로그인'}
+                  onClick={() => window.location.replace(data)}
+          >
             <Icon iconName={'Google'} size={'MEDIUM'} />
           </Button>
           <Button size={'LARGE'} color={'white'} text={'BSM 계정으로 로그인'}>
