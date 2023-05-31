@@ -14,7 +14,6 @@ const LoginLayout = ({ children, height }: PropsType) => {
     <>
       <StyledLoginLayout>
         <Container style={{ height: height }}>
-          <SsamblueLogo size={'MEDIUM'} />
           {children}
         </Container>
       </StyledLoginLayout>
@@ -34,12 +33,9 @@ const StyledLoginLayout = styled.main`
 `;
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 64px;
   background-color: ${palette.MONO_WHITE};
   padding: 96px 64px 58px;
   border-radius: 36px;
-  transition: all 0.5s;
+  transition: height 450ms;
+  width: 565.54px;
 `;

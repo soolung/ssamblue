@@ -11,7 +11,6 @@ interface PropsInterface {
 const MenuItem = ({ emoji, href, name }: PropsInterface) => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname + ' ' + href)
 
   return (
     <Container onClick={() => router.push(href)}>

@@ -1,4 +1,4 @@
-import { Button, Icon } from '@k99hyerin/dj-simblue';
+import { Button, Icon, SsamblueLogo } from '@k99hyerin/dj-simblue';
 import styled from 'styled-components';
 import ChangeLoginType from '@/components/login/changeLoginType';
 
@@ -9,15 +9,18 @@ interface PropsType {
 const OAuthLogin = ({ changeLoginType }: PropsType) => {
   return (
     <Container>
-      <ButtonContainer>
-        <Button size={'LARGE'} state={'ENABLED'} text={'구글 학교 계정으로 로그인'}>
-          <Icon iconName={'Error'} size={'SMALL'} />
-        </Button>
-        <Button size={'LARGE'} state={'ENABLED'} text={'BSM 계정으로 로그인'}>
-          <Icon iconName={'Error'} size={'SMALL'} />
-        </Button>
-      </ButtonContainer>
-      <ChangeLoginType text={"비밀번호로 로그인하기"} arrow={'right'} onClick={() => changeLoginType('password')} />
+      <SsamblueLogo size={'MEDIUM'} />
+      <ContentContainer>
+        <ButtonContainer>
+          <Button size={'LARGE'} color={'white'} text={'구글 학교 계정으로 로그인'}>
+            <Icon iconName={'Google'} size={'MEDIUM'} />
+          </Button>
+          <Button size={'LARGE'} color={'white'} text={'BSM 계정으로 로그인'}>
+            <Icon iconName={'BSM'} size={'MEDIUM'} />
+          </Button>
+        </ButtonContainer>
+        <ChangeLoginType text={"비밀번호로 로그인하기"} arrow={'right'} onClick={() => changeLoginType('password')} />
+      </ContentContainer>
     </Container>
   );
 }
@@ -25,6 +28,13 @@ const OAuthLogin = ({ changeLoginType }: PropsType) => {
 export default OAuthLogin;
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+`;
+
+const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 48px;
