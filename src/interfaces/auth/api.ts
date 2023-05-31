@@ -14,7 +14,7 @@ export const getAccessTokenByGoogle = async (code: string) => {
 
 
 // 로그인
-interface loginUserParams {
+export interface loginUserParams {
   email: string,
   password: string
 }
