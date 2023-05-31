@@ -26,6 +26,7 @@ const login = ({ accessToken, refreshToken, authority }: LoginResponse, router: 
   router.push("/");
 }
 
+
 // 비밀번호 로그인
 export const usePasswordLoginMutation = ({ email, password, }: loginUserParams) => {
   const router = useRouter();
@@ -42,7 +43,7 @@ export const usePasswordLoginMutation = ({ email, password, }: loginUserParams) 
 };
 
 
-// google login
+// 구글 로그인
 export const useGoogleLoginMutation = (code: string) => {
   const router = useRouter();
 
