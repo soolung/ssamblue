@@ -1,4 +1,4 @@
-import { server } from "@/api/index";
+import { server } from "@/lib/axios";
 
 
 // 구글 OAuth Link 조회

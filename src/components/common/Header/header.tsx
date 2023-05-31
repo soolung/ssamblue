@@ -1,4 +1,4 @@
-import { Storage } from "@/api/storage";
+import { Storage } from "@/lib/storage";
 import { palette, SsamblueLogo } from '@k99hyerin/dj-simblue';
 import { ACCESS_KEY } from '@/constants/token';
 import styled from 'styled-components';

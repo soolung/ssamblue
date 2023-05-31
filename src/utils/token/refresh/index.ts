@@ -1,7 +1,7 @@
 import { ACCESS_KEY, REFRESH_KEY } from "@/constants/token";
 import { useRouter } from "next/navigation";
-import { server } from "@/api";
-import { Storage } from "../../storage";
+import { server } from "@/lib/axios";
+import { Storage } from "@/lib/storage";
 
 export const refreshExpiredToken = async () => {
   const router = useRouter();

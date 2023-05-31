@@ -1772,10 +1772,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@k99hyerin/dj-simblue@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@k99hyerin/dj-simblue/-/dj-simblue-1.1.0.tgz#bbc2d8ddaefa3c23dd850d0270749786ce3001a4"
-  integrity sha512-81MkbDOCWoW5XU7pWbTFEVvZAj72FN0VsbvjFZx+OuY0XTaQfxPbIWxk2xWetY/MzkM/EfVk/CyzqqtEAgnQXQ==
+"@k99hyerin/dj-simblue@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@k99hyerin/dj-simblue/-/dj-simblue-1.1.3.tgz#1a84a7fe874b90dd95fe79440afd4bd0bdd26465"
+  integrity sha512-PsenhVMi8mMd6zSgcod8syvQ0ghHsqcymui15F09Vv6hrGl1ZAAGpjgpUtwhOCqTVk6qfG3SPblP1hoNjmQ4Qg==
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"

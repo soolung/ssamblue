@@ -1,5 +1,5 @@
 import axios from "axios";
-import { refreshExpiredToken } from "./token/refresh";
+import { refreshExpiredToken } from "../../utils/token/refresh";
 
 const server = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,

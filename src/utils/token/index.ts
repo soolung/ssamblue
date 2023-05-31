@@ -1,5 +1,5 @@
 import { ACCESS_KEY } from '@/constants/token';
-import { Storage } from "@/api/storage";
+import { Storage } from "@/lib/storage";
 
 export const authorization = () => {
   return {
