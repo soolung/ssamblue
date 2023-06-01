@@ -1,6 +1,6 @@
-import { Storage } from "@/api/storage";
+import { Storage } from "@/lib/storage";
 import { palette, SsamblueLogo } from '@k99hyerin/dj-simblue';
-import { ACCESS_KEY } from '@/constants/token';
+import { ACCESS_KEY } from '@/constants/auth';
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 import Profile from '@/components/common/Header/profile';
