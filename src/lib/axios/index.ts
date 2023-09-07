@@ -25,6 +25,7 @@ server.interceptors.response.use(
   async (error) => {
     const { status, code, message } = error.response.data;
     if (message && status === 401 && code === "EXPIRED_TOKEN") {
+      console.info(status, code, message)
       await refreshExpiredToken();
     }
     return Promise.reject(error);
