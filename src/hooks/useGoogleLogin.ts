@@ -5,7 +5,7 @@ export const useGoogleLogin = () => {
   const params = useSearchParams();
   const code = params.get("code");
 
-  const mutation = useGoogleLoginMutation(code);
+  const mutation = useGoogleLoginMutation(code!);
 
   return { mutation };
 };
