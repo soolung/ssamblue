@@ -20,7 +20,9 @@ const TodaySeatTicket = () => {
       <HeaderContainer>
         <TableInputContainer>
           <TableInput text={"날짜"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>2023.01.12</Text>
+            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>
+              {new Date().toLocaleDateString()}
+            </Text>
           </TableInput>
           <TableInput text={"장소"}>
             <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>프로그래밍1실</Text>
