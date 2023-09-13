@@ -1,19 +1,47 @@
 "use client";
 
 import { useQuery } from 'react-query';
-import { getApplicationResult } from '@/interfaces/application/api';
+import { Filter, getApplicationResult } from '@/interfaces/application/api';
 import AppLayout from '@/layouts/AppLayout';
-import { Button, Table, TableItem, TableRow, Text } from '@k99hyerin/dj-simblue';
+import { Button, Dropdown, DropItem, Table, TableItem, TableRow, Text } from '@k99hyerin/dj-simblue';
 import { APPLICATION } from '@/constants/queryKey';
 import styled from 'styled-components';
 import TableInput from '@/components/common/TableInput/tableInput';
 import { todaySeatTicketTableHead } from '@/constants/table';
 import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
+import { format } from '@/utils/date/formatter';
+import { usePlaceDropdown } from '@/hooks/usePlaceDropdown';
+import { useTimeDropdown } from '@/hooks/useTimeDropdown';
 
 const TodaySeatTicket = () => {
-  const { data, isSuccess } = useQuery(
-    [APPLICATION, 1],
-    () => getApplicationResult(1), {})
+  const placeDropdown = usePlaceDropdown();
+  const timeDropdown = useTimeDropdown();
+
+  const appendOrNone = (questionId: number, target: string): Filter[] => {
+    return target !== '전체' ?
+      [{
+        questionId: questionId,
+        operator: 'EQUAL',
+        target: target
+      }] : [];
+  }
+  const { data, isSuccess, refetch } = useQuery(
+      [APPLICATION, 1],
+      () => getApplicationResult({
+        id: 1,
+        filterList: [
+          {
+            questionId: 1,
+            operator: 'EQUAL',
+            target: format(new Date())
+          },
+          ...appendOrNone(2, placeDropdown.value),
+          ...appendOrNone(3, timeDropdown.value)
+        ]
+      }),
+      {}
+    )
+  ;
 
   return isSuccess && (
     <AppLayout title={"오늘의 이석증"}>
@@ -25,13 +53,46 @@ const TodaySeatTicket = () => {
             </Text>
           </TableInput>
           <TableInput text={"장소"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>프로그래밍1실</Text>
+            <Dropdown isClicked={placeDropdown.isClicked}
+                      setIsClicked={placeDropdown.toggle}
+                      selectedItem={{
+                        name: placeDropdown.value,
+                        state: 'ENABLED'
+                      }}
+            >
+              {placeDropdown.valueList.map(p => <DropItem
+                onClick={() => placeDropdown.select(p)}
+                dropItem={{
+                  name: p,
+                  state: 'ENABLED'
+                }} />
+              )}
+            </Dropdown>
           </TableInput>
           <TableInput text={"이동시간"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>7교시</Text>
+            <Dropdown isClicked={timeDropdown.isClicked}
+                      setIsClicked={timeDropdown.toggle}
+                      selectedItem={{
+                        name: timeDropdown.value,
+                        state: 'ENABLED'
+                      }}
+            >
+              {timeDropdown.valueList.map(t => <DropItem
+                onClick={() => timeDropdown.select(t)}
+                dropItem={{
+                  name: t,
+                  state: 'ENABLED'
+                }} />
+              )}
+            </Dropdown>
           </TableInput>
         </TableInputContainer>
-        <ConfirmButton size={'X_SMALL'} color={'primary'} text={'확인하기'} />
+        <ConfirmButton
+          size={'X_SMALL'}
+          color={'primary'}
+          text={'불러오기'}
+          onClick={() => refetch()}
+        />
       </HeaderContainer>
       <Table headTitle={todaySeatTicketTableHead}>
         {data.resultList.map(r => (

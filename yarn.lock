@@ -1793,10 +1793,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@k99hyerin/dj-simblue@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@k99hyerin/dj-simblue/-/dj-simblue-1.2.1.tgz"
-  integrity sha512-Hjl3xYo/rhH1Qzhl5Ge1jMQyC4ESaqxnPZJXAexw1uz4nS/Ty9hsflhAm7auoovXCpOM394HuUGzfGjBEu8VRQ==
+"@k99hyerin/dj-simblue@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/@k99hyerin/dj-simblue/-/dj-simblue-1.2.3.tgz"
+  integrity sha512-G4rPwfeCCa3KnssFx8kx+XEkZnShzsphCwiTza61LpBXz0gsVEx8orpRr2okq5CAUHycijCFZf5saD33OyrZRw==
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
@@ -9203,7 +9203,7 @@ q@^1.1.2:
   resolved "https://registry.npmjs.org/q/-/q-1.5.1.tgz"
   integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
 
-qs@^6.10.0:
+qs@^6.10.0, qs@^6.11.2:
   version "6.11.2"
   resolved "https://registry.npmjs.org/qs/-/qs-6.11.2.tgz"
   integrity sha512-tDNIz22aBzCDxLtVH++VnTfzxlfeK5CbqohpSqpJgj1Wg/cQbStNAz3NuqCs5vV+pjBsK4x4pN9HlVh7rcYRiA==

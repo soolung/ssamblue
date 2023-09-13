@@ -15,7 +15,7 @@ export const generateReplyStateBadge = (text: "APPROVED" | "WAITING" | "REJECTED
     )
   } else if (text == "REJECTED") {
     return (
-      <Badge text={"거부됨"} bgColor={'RED_200'}>
+      <Badge text={"거부됨"} bgColor={'GRAY_300'}>
         <Icon iconName={'Error'} color={'GRAY_500'} />
       </Badge>
     )

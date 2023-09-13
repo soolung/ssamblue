@@ -35,9 +35,11 @@ const Header = styled.th`
   background-color: ${palette.GRAY_50};
   padding: 8px 12px;
   text-align: left;
+  width: 110px;
 `;
 
 const Input = styled.td`
+  cursor: pointer;
   padding: 8px 12px;
 
   input {

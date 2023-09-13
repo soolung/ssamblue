@@ -2,31 +2,68 @@
 
 import AppLayout from '@/layouts/AppLayout';
 import TableInput from '@/components/common/TableInput/tableInput';
-import { Button, Icon, Table, TableItem, TableRow, Text } from '@k99hyerin/dj-simblue';
+import { Button, DatePicker, Dropdown, DropItem, Icon, Table, TableItem, TableRow, Text } from '@k99hyerin/dj-simblue';
 import styled from 'styled-components';
 import { seeSeatTicketTableHead } from '@/constants/table';
 import { useQuery } from 'react-query';
 import { APPLICATION } from '@/constants/queryKey';
 import { getApplicationResult } from '@/interfaces/application/api';
 import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
+import { usePlaceDropdown } from '@/hooks/usePlaceDropdown';
+import { useTimeDropdown } from '@/hooks/useTimeDropdown';
 
 const SeeSeatTicket = () => {
+  const placeDropdown = usePlaceDropdown();
+  const timeDropdown = useTimeDropdown();
+  
   const { data, isSuccess } = useQuery(
     [APPLICATION, 1],
-    () => getApplicationResult(1), {})
+    () => getApplicationResult({
+      id: 1,
+    }), {})
 
   return isSuccess && (
     <AppLayout title="이석증 확인하기">
       <HeaderContainer>
         <TableInputContainer>
           <TableInput text={"날짜"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>2023.01.12 ~ 2023.01.13</Text>
+            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>
+              <DatePicker />
+            </Text>
           </TableInput>
           <TableInput text={"장소"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>프로그래밍1실</Text>
+            <Dropdown isClicked={placeDropdown.isClicked}
+                      setIsClicked={placeDropdown.toggle}
+                      selectedItem={{
+                        name: placeDropdown.value,
+                        state: 'ENABLED'
+                      }}
+            >
+              {placeDropdown.valueList.map(p => <DropItem
+                onClick={() => placeDropdown.select(p)}
+                dropItem={{
+                  name: p,
+                  state: 'ENABLED'
+                }} />
+              )}
+            </Dropdown>
           </TableInput>
           <TableInput text={"이동시간"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>7교시</Text>
+            <Dropdown isClicked={timeDropdown.isClicked}
+                      setIsClicked={timeDropdown.toggle}
+                      selectedItem={{
+                        name: timeDropdown.value,
+                        state: 'ENABLED'
+                      }}
+            >
+              {timeDropdown.valueList.map(t => <DropItem
+                onClick={() => timeDropdown.select(t)}
+                dropItem={{
+                  name: t,
+                  state: 'ENABLED'
+                }} />
+              )}
+            </Dropdown>
           </TableInput>
         </TableInputContainer>
         <ConfirmButton size={'X_SMALL'} color={'primary'} text={'확인하기'} />
