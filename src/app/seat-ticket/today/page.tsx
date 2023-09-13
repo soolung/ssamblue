@@ -10,12 +10,12 @@ import TableInput from '@/components/common/TableInput/tableInput';
 import { todaySeatTicketTableHead } from '@/constants/table';
 import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
 import { format } from '@/utils/date/formatter';
-import { usePlaceDropdown } from '@/hooks/usePlaceDropdown';
-import { useTimeDropdown } from '@/hooks/useTimeDropdown';
+import { useDropdown } from '@/hooks/useDropdown';
+import { PLACE, TIME } from '@/constants/dropdown';
 
 const TodaySeatTicket = () => {
-  const placeDropdown = usePlaceDropdown();
-  const timeDropdown = useTimeDropdown();
+  const placeDropdown = useDropdown(PLACE);
+  const timeDropdown = useDropdown(TIME);
 
   const appendOrNone = (questionId: number, target: string): Filter[] => {
     return target !== '전체' ?

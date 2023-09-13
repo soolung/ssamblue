@@ -9,13 +9,13 @@ import { useQuery } from 'react-query';
 import { APPLICATION } from '@/constants/queryKey';
 import { getApplicationResult } from '@/interfaces/application/api';
 import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
-import { usePlaceDropdown } from '@/hooks/usePlaceDropdown';
-import { useTimeDropdown } from '@/hooks/useTimeDropdown';
+import { useDropdown } from '@/hooks/useDropdown';
+import { PLACE, TIME } from '@/constants/dropdown';
 
 const SeeSeatTicket = () => {
-  const placeDropdown = usePlaceDropdown();
-  const timeDropdown = useTimeDropdown();
-  
+  const placeDropdown = useDropdown(PLACE);
+  const timeDropdown = useDropdown(TIME);
+
   const { data, isSuccess } = useQuery(
     [APPLICATION, 1],
     () => getApplicationResult({
