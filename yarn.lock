@@ -1793,10 +1793,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@k99hyerin/dj-simblue@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.npmjs.org/@k99hyerin/dj-simblue/-/dj-simblue-1.2.3.tgz"
-  integrity sha512-G4rPwfeCCa3KnssFx8kx+XEkZnShzsphCwiTza61LpBXz0gsVEx8orpRr2okq5CAUHycijCFZf5saD33OyrZRw==
+"@k99hyerin/dj-simblue@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.npmjs.org/@k99hyerin/dj-simblue/-/dj-simblue-1.2.4.tgz"
+  integrity sha512-0xZ/Ume8NzcNBdJEfLo9WjcxE7UMhm9vgvTirZiE8MzJcbANM5i4VKLXHpqwqzG6x90G2auLDoeVxEqgH0IT+A==
   dependencies:
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"

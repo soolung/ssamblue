@@ -11,7 +11,8 @@ const Operator = {
   BEFORE: 'BEFORE',
   AFTER: 'AFTER',
   BEFORE_OR_EQUAL: 'BEFORE_OR_EQUAL',
-  AFTER_OR_EQUAL: 'AFTER_OR_EQUAL'
+  AFTER_OR_EQUAL: 'AFTER_OR_EQUAL',
+  CONTAINS: 'CONTAINS',
 } as const;
 export type Operator = typeof Operator[keyof typeof Operator];
 

@@ -25,6 +25,7 @@ const TodaySeatTicket = () => {
         target: target
       }] : [];
   }
+
   const { data, isSuccess, refetch } = useQuery(
       [APPLICATION, 1],
       () => getApplicationResult({

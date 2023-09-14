@@ -7,19 +7,54 @@ import styled from 'styled-components';
 import { seeSeatTicketTableHead } from '@/constants/table';
 import { useQuery } from 'react-query';
 import { APPLICATION } from '@/constants/queryKey';
-import { getApplicationResult } from '@/interfaces/application/api';
+import { Filter, getApplicationResult, Operator } from '@/interfaces/application/api';
 import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
 import { useDropdown } from '@/hooks/useDropdown';
 import { PLACE, TIME } from '@/constants/dropdown';
+import { format } from '@/utils/date/formatter';
+import { useDatePicker } from '@/hooks/useDatePicker';
+import { useEffect } from 'react';
 
 const SeeSeatTicket = () => {
   const placeDropdown = useDropdown(PLACE);
   const timeDropdown = useDropdown(TIME);
+  const datePicker = useDatePicker();
 
-  const { data, isSuccess } = useQuery(
+  const appendOrNone = ({ questionId, target, operator = 'EQUAL' }: {
+    questionId: number,
+    target: string | null,
+    operator?: Operator
+  }): Filter[] => {
+    return target != null && target !== '전체' ?
+      [{
+        questionId: questionId,
+        operator: operator,
+        target: target
+      }] : [];
+  }
+
+  useEffect(() => {
+    console.log(datePicker.selectedDate);
+  }, [datePicker.selectedDate])
+
+  const { data, isSuccess, refetch } = useQuery(
     [APPLICATION, 1],
     () => getApplicationResult({
       id: 1,
+      filterList: [
+        {
+          questionId: 1,
+          operator: datePicker.isRange() ? 'BEFORE_OR_EQUAL' : 'EQUAL',
+          target: format(datePicker.selectedDate)
+        },
+        ...appendOrNone({
+          questionId: 1,
+          target: datePicker.isRange() ? format(datePicker.endDate!) : null,
+          operator: 'AFTER_OR_EQUAL'
+        }),
+        ...appendOrNone({ questionId: 2, target: placeDropdown.value }),
+        ...appendOrNone({ questionId: 3, target: timeDropdown.value })
+      ]
     }), {})
 
   return isSuccess && (
@@ -28,7 +63,10 @@ const SeeSeatTicket = () => {
         <TableInputContainer>
           <TableInput text={"날짜"}>
             <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>
-              <DatePicker />
+              <DatePicker
+                handleSelectedDate={datePicker.setSelectedDate}
+                handleEndDate={datePicker.setEndDate}
+              />
             </Text>
           </TableInput>
           <TableInput text={"장소"}>
@@ -66,7 +104,9 @@ const SeeSeatTicket = () => {
             </Dropdown>
           </TableInput>
         </TableInputContainer>
-        <ConfirmButton size={'X_SMALL'} color={'primary'} text={'확인하기'} />
+        <ConfirmButton
+          onClick={() => refetch()}
+          size={'X_SMALL'} color={'primary'} text={'불러오기'} />
       </HeaderContainer>
       <ContentContainer>
         <ButtonContainer>
