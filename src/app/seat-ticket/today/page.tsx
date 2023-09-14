@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from 'react-query';
-import { Filter, getApplicationResult } from '@/interfaces/application/api';
+import { getApplicationResult } from '@/interfaces/application/api';
 import AppLayout from '@/layouts/AppLayout';
 import { Button, Dropdown, DropItem, Table, TableItem, TableRow, Text } from '@k99hyerin/dj-simblue';
 import { APPLICATION } from '@/constants/queryKey';
@@ -12,19 +12,11 @@ import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
 import { format } from '@/utils/date/formatter';
 import { useDropdown } from '@/hooks/useDropdown';
 import { PLACE, TIME } from '@/constants/dropdown';
+import { appendOrNone } from '@/utils/filter';
 
 const TodaySeatTicket = () => {
   const placeDropdown = useDropdown(PLACE);
   const timeDropdown = useDropdown(TIME);
-
-  const appendOrNone = (questionId: number, target: string): Filter[] => {
-    return target !== '전체' ?
-      [{
-        questionId: questionId,
-        operator: 'EQUAL',
-        target: target
-      }] : [];
-  }
 
   const { data, isSuccess, refetch } = useQuery(
       [APPLICATION, 1],
@@ -36,8 +28,8 @@ const TodaySeatTicket = () => {
             operator: 'EQUAL',
             target: format(new Date())
           },
-          ...appendOrNone(2, placeDropdown.value),
-          ...appendOrNone(3, timeDropdown.value)
+          ...appendOrNone({ questionId: 2, target: placeDropdown.value }),
+          ...appendOrNone({ questionId: 3, target: timeDropdown.value, operator: 'CONTAINS' })
         ]
       }),
       {}

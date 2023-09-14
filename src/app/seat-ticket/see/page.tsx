@@ -7,35 +7,18 @@ import styled from 'styled-components';
 import { seeSeatTicketTableHead } from '@/constants/table';
 import { useQuery } from 'react-query';
 import { APPLICATION } from '@/constants/queryKey';
-import { Filter, getApplicationResult, Operator } from '@/interfaces/application/api';
+import { getApplicationResult } from '@/interfaces/application/api';
 import { generateReplyStateBadge } from '@/utils/badge/generateReplyStateBadge';
 import { useDropdown } from '@/hooks/useDropdown';
 import { PLACE, TIME } from '@/constants/dropdown';
 import { format } from '@/utils/date/formatter';
 import { useDatePicker } from '@/hooks/useDatePicker';
-import { useEffect } from 'react';
+import { appendOrNone } from '@/utils/filter';
 
 const SeeSeatTicket = () => {
   const placeDropdown = useDropdown(PLACE);
   const timeDropdown = useDropdown(TIME);
   const datePicker = useDatePicker();
-
-  const appendOrNone = ({ questionId, target, operator = 'EQUAL' }: {
-    questionId: number,
-    target: string | null,
-    operator?: Operator
-  }): Filter[] => {
-    return target != null && target !== '전체' ?
-      [{
-        questionId: questionId,
-        operator: operator,
-        target: target
-      }] : [];
-  }
-
-  useEffect(() => {
-    console.log(datePicker.selectedDate);
-  }, [datePicker.selectedDate])
 
   const { data, isSuccess, refetch } = useQuery(
     [APPLICATION, 1],
@@ -53,7 +36,7 @@ const SeeSeatTicket = () => {
           operator: 'AFTER_OR_EQUAL'
         }),
         ...appendOrNone({ questionId: 2, target: placeDropdown.value }),
-        ...appendOrNone({ questionId: 3, target: timeDropdown.value })
+        ...appendOrNone({ questionId: 3, target: timeDropdown.value, operator: 'CONTAINS' })
       ]
     }), {})
 
