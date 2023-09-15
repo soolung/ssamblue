@@ -4,33 +4,39 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { Icon, palette, Text } from '@k99hyerin/dj-simblue';
 import { useRouter } from 'next/navigation';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: '로그인 | 쌤청이',
+}
 
 interface PropsType {
-  children: ReactNode;
-  height: number | string;
+    children: ReactNode;
+    height: number | string;
 }
 
 const LoginLayout = ({ children, height }: PropsType) => {
-  const router = useRouter();
+    const router = useRouter();
 
-  return (
-    <>
-      <StyledLoginLayout>
-        <Container style={{ height: height }}>
-          {children}
-          <SignUpContainer>
-            <Icon iconName={'Help'} size={'MEDIUM'} color={'GRAY_400'} />
-            <Text typo={'LABEL_MEDIUM'} textColor={'GRAY_400'}>
-              계정이 없으신가요?
-            </Text>
-            <TextButton typo={'LABEL_MEDIUM'} textColor={'PRIMARY_400'} onClick={() => router.push("/signup")}>
-              구글 계정으로 회원가입
-            </TextButton>
-          </SignUpContainer>
-        </Container>
-      </StyledLoginLayout>
-    </>
-  );
+    return (
+        <>
+            <StyledLoginLayout>
+                <Container style={{ height: height }}>
+                    {children}
+                    <SignUpContainer>
+                        <Icon iconName={'Help'} size={'MEDIUM'} color={'GRAY_400'} />
+                        <Text typo={'LABEL_MEDIUM'} textColor={'GRAY_400'}>
+                            계정이 없으신가요?
+                        </Text>
+                        <TextButton typo={'LABEL_MEDIUM'} textColor={'PRIMARY_400'}
+                                    onClick={() => router.push("/signup")}>
+                            구글 계정으로 회원가입
+                        </TextButton>
+                    </SignUpContainer>
+                </Container>
+            </StyledLoginLayout>
+        </>
+    );
 };
 
 export default LoginLayout;
