@@ -11,8 +11,12 @@ interface PropsType {
 const queryClient = new QueryClient();
 
 const RootLayout = ({ children }: PropsType) => {
+
   return (
     <html lang="ko">
+      <head>
+        <title>쌤청이</title>
+      </head>
       <body>
         <QueryClientProvider client={queryClient}>
           {children}

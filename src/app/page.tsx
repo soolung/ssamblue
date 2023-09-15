@@ -2,7 +2,7 @@ import AppLayout from '@/layouts/AppLayout';
 
 const Home = () => {
   return (
-    <AppLayout>
+    <AppLayout title='굿'>
       <div>as</div>
     </AppLayout>
   );

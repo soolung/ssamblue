@@ -5,11 +5,17 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { palette, Text } from '@k99hyerin/dj-simblue';
 import SideBar from '@/components/common/SideBar/sidebar';
+import Head from 'next/head';
+import { Metadata } from 'next';
 
 interface PropsType {
   children: ReactNode;
   backgroundColor?: string;
   title: string;
+}
+
+export const metadata: Metadata = {
+    title: '쌤청이',
 }
 
 const AppLayout = ({ children, backgroundColor, title }: PropsType) => {

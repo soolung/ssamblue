@@ -37,71 +37,73 @@ const TodaySeatTicket = () => {
   ;
 
   return isSuccess && (
-    <AppLayout title={"오늘의 이석증"}>
-      <HeaderContainer>
-        <TableInputContainer>
-          <TableInput text={"날짜"}>
-            <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>
-              {new Date().toLocaleDateString()}
-            </Text>
-          </TableInput>
-          <TableInput text={"장소"}>
-            <Dropdown isClicked={placeDropdown.isClicked}
-                      setIsClicked={placeDropdown.toggle}
-                      selectedItem={{
-                        name: placeDropdown.value,
-                        state: 'ENABLED'
-                      }}
-            >
-              {placeDropdown.valueList.map(p => <DropItem
-                onClick={() => placeDropdown.select(p)}
-                dropItem={{
-                  name: p,
-                  state: 'ENABLED'
-                }} />
-              )}
-            </Dropdown>
-          </TableInput>
-          <TableInput text={"이동시간"}>
-            <Dropdown isClicked={timeDropdown.isClicked}
-                      setIsClicked={timeDropdown.toggle}
-                      selectedItem={{
-                        name: timeDropdown.value,
-                        state: 'ENABLED'
-                      }}
-            >
-              {timeDropdown.valueList.map(t => <DropItem
-                onClick={() => timeDropdown.select(t)}
-                dropItem={{
-                  name: t,
-                  state: 'ENABLED'
-                }} />
-              )}
-            </Dropdown>
-          </TableInput>
-        </TableInputContainer>
-        <ConfirmButton
-          size={'X_SMALL'}
-          color={'primary'}
-          text={'불러오기'}
-          onClick={() => refetch()}
-        />
-      </HeaderContainer>
-      <Table headTitle={todaySeatTicketTableHead}>
-        {data.resultList.map(r => (
-          <TableRow>
-            <TableItem>{r.studentNumber}</TableItem>
-            <TableItem>{r.name}</TableItem>
-            <TableItem>{r.replyList[1].reply}</TableItem>
-            <TableItem>{r.replyList[2].reply}</TableItem>
-            <TableItem>{r.replyList[3].reply}</TableItem>
-            <TableItem>{r.replyList[4].reply}</TableItem>
-            <TableItem>{generateReplyStateBadge(r.replyList[4].state)}</TableItem>
-          </TableRow>
-        ))
-        }
-      </Table>
-    </AppLayout>
+    <>
+      <AppLayout title={"오늘의 이석증"}>
+        <HeaderContainer>
+          <TableInputContainer>
+            <TableInput text={"날짜"}>
+              <Text typo={'PARAGRAPH_SMALL'} textColor={'GRAY_700'}>
+                {new Date().toLocaleDateString()}
+              </Text>
+            </TableInput>
+            <TableInput text={"장소"}>
+              <Dropdown isClicked={placeDropdown.isClicked}
+                        setIsClicked={placeDropdown.toggle}
+                        selectedItem={{
+                          name: placeDropdown.value,
+                          state: 'ENABLED'
+                        }}
+              >
+                {placeDropdown.valueList.map(p => <DropItem
+                  onClick={() => placeDropdown.select(p)}
+                  dropItem={{
+                    name: p,
+                    state: 'ENABLED'
+                  }} />
+                )}
+              </Dropdown>
+            </TableInput>
+            <TableInput text={"이동시간"}>
+              <Dropdown isClicked={timeDropdown.isClicked}
+                        setIsClicked={timeDropdown.toggle}
+                        selectedItem={{
+                          name: timeDropdown.value,
+                          state: 'ENABLED'
+                        }}
+              >
+                {timeDropdown.valueList.map(t => <DropItem
+                  onClick={() => timeDropdown.select(t)}
+                  dropItem={{
+                    name: t,
+                    state: 'ENABLED'
+                  }} />
+                )}
+              </Dropdown>
+            </TableInput>
+          </TableInputContainer>
+          <ConfirmButton
+            size={'X_SMALL'}
+            color={'primary'}
+            text={'불러오기'}
+            onClick={() => refetch()}
+          />
+        </HeaderContainer>
+        <Table headTitle={todaySeatTicketTableHead}>
+          {data.resultList.map(r => (
+            <TableRow>
+              <TableItem>{r.studentNumber}</TableItem>
+              <TableItem>{r.name}</TableItem>
+              <TableItem>{r.replyList[1].reply}</TableItem>
+              <TableItem>{r.replyList[2].reply}</TableItem>
+              <TableItem>{r.replyList[3].reply}</TableItem>
+              <TableItem>{r.replyList[4].reply}</TableItem>
+              <TableItem>{generateReplyStateBadge(r.replyList[4].state)}</TableItem>
+            </TableRow>
+          ))
+          }
+        </Table>
+      </AppLayout>
+    </>
   )
 }
 
