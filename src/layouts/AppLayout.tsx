@@ -5,13 +5,13 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { palette, Text } from '@k99hyerin/dj-simblue';
 import SideBar from '@/components/common/SideBar/sidebar';
-import Head from 'next/head';
 import { Metadata } from 'next';
+import AuthShield from '@/utils/auth/AuthShield';
 
 interface PropsType {
-  children: ReactNode;
-  backgroundColor?: string;
-  title: string;
+    children: ReactNode;
+    backgroundColor?: string;
+    title: string;
 }
 
 export const metadata: Metadata = {
@@ -19,16 +19,16 @@ export const metadata: Metadata = {
 }
 
 const AppLayout = ({ children, backgroundColor, title }: PropsType) => {
-  return (
-    <>
-      <Header />
-      <SideBar />
-      <StyledAppLayout style={{ backgroundColor }}>
-        <Text typo={'HEADING_LARGE'}>{title}</Text>
-        {children}
-      </StyledAppLayout>
-    </>
-  );
+    return (
+        <AuthShield>
+            <Header />
+            <SideBar />
+            <StyledAppLayout style={{ backgroundColor }}>
+                <Text typo={'HEADING_LARGE'}>{title}</Text>
+                {children}
+            </StyledAppLayout>
+        </AuthShield>
+    );
 };
 
 export default AppLayout;
