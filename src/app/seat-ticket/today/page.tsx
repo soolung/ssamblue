@@ -13,23 +13,24 @@ import { format } from '@/utils/date/formatter';
 import { useDropdown } from '@/hooks/useDropdown';
 import { PLACE, TIME } from '@/constants/dropdown';
 import { appendOrNone } from '@/utils/filter';
+import { SEAT_TICKET_DATE_ID, SEAT_TICKET_ID, SEAT_TICKET_PLACE_ID, SEAT_TICKET_TIME_ID } from '@/constants/seatTicket';
 
 const TodaySeatTicket = () => {
   const placeDropdown = useDropdown(PLACE);
   const timeDropdown = useDropdown(TIME);
 
   const { data, isSuccess, refetch } = useQuery(
-      [APPLICATION, 1],
+      [APPLICATION, SEAT_TICKET_ID],
       () => getApplicationResult({
-        id: 1,
+        id: SEAT_TICKET_ID,
         filterList: [
           {
-            questionId: 1,
+            questionId: SEAT_TICKET_DATE_ID,
             operator: 'EQUAL',
             target: format(new Date())
           },
-          ...appendOrNone({ questionId: 2, target: placeDropdown.value }),
-          ...appendOrNone({ questionId: 3, target: timeDropdown.value, operator: 'CONTAINS' })
+          ...appendOrNone({ questionId: SEAT_TICKET_PLACE_ID, target: placeDropdown.value }),
+          ...appendOrNone({ questionId: SEAT_TICKET_TIME_ID, target: timeDropdown.value, operator: 'CONTAINS' })
         ]
       }),
       {}
