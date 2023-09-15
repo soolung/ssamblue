@@ -4,7 +4,7 @@ import { Icon, Text } from '@k99hyerin/dj-simblue';
 interface PropsType {
   text: string;
   arrow: 'left' | 'right';
-  onClick: (type: 'oauth' | 'password') => void;
+  onClick: () => void;
 }
 
 const ChangeLoginType = ({ text, arrow, onClick }: PropsType) => {
