@@ -8,9 +8,10 @@ import { ASSIGNED_REPLY } from '@/constants/queryKey';
 import { handleSeatTicketTableHead } from '@/constants/table';
 import styled from 'styled-components';
 import { useHandleReplyMutation } from '@/interfaces/reply/mutation';
+import { SEAT_TICKET_ID } from '@/constants/seatTicket';
 
 const HandleSeatTicket = () => {
-  const { data, isSuccess } = useQuery([ASSIGNED_REPLY, 1], () => getAssignedReply(1), {
+  const { data, isSuccess } = useQuery([ASSIGNED_REPLY, SEAT_TICKET_ID], () => getAssignedReply(SEAT_TICKET_ID), {
     onSuccess: () => {}
   })
   const { mutate } = useHandleReplyMutation();

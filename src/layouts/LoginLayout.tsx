@@ -4,11 +4,6 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { Icon, palette, Text } from '@k99hyerin/dj-simblue';
 import { useRouter } from 'next/navigation';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-    title: '로그인 | 쌤청이',
-}
 
 interface PropsType {
     children: ReactNode;
