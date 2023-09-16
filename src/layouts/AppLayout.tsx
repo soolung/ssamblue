@@ -5,17 +5,12 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { palette, Text } from '@k99hyerin/dj-simblue';
 import SideBar from '@/components/common/SideBar/sidebar';
-import { Metadata } from 'next';
 import AuthShield from '@/utils/auth/AuthShield';
 
 interface PropsType {
     children: ReactNode;
     backgroundColor?: string;
     title: string;
-}
-
-export const metadata: Metadata = {
-    title: '쌤청이',
 }
 
 const AppLayout = ({ children, backgroundColor, title }: PropsType) => {

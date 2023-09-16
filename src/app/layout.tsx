@@ -15,6 +15,9 @@ const RootLayout = ({ children }: PropsType) => {
 
     return (
         <html lang="ko">
+        <head>
+            <title>쌤청이</title>
+        </head>
         <body>
         <RecoilRoot>
             <QueryClientProvider client={queryClient}>

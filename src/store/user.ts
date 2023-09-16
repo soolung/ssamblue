@@ -1,4 +1,4 @@
-import { atom, useRecoilState } from 'recoil';
+import { atom, useRecoilState, useRecoilValue } from 'recoil';
 import { User } from '@/types/user';
 
 const userState = atom<User>({
@@ -10,3 +10,5 @@ const userState = atom<User>({
 });
 
 export const useUserRecoilState = () => useRecoilState(userState);
+
+export const useUserRecoilValue = () => useRecoilValue(userState);
