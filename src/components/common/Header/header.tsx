@@ -4,8 +4,7 @@ import Profile from '@/components/common/Header/profile';
 import useUser from '@/hooks/useUser';
 
 const Header = () => {
-    const {user} = useUser();
-    console.info('header', user)
+    const { user } = useUser();
 
     return (
         <StyledHeader>

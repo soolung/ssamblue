@@ -11,7 +11,6 @@ const AuthShield = ({ children }: PropsType) => {
     const { isLoggedIn, user } = useUser();
 
     useEffect(() => {
-        console.info('auth shield', isLoggedIn)
         if (!isLoggedIn) {
             router.push('/login');
         }

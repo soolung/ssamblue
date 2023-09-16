@@ -11,7 +11,7 @@ import { useHandleReplyMutation } from '@/interfaces/reply/mutation';
 import { SEAT_TICKET_ID } from '@/constants/seatTicket';
 
 const HandleSeatTicket = () => {
-  const { data, isSuccess } = useQuery([ASSIGNED_REPLY, 1], () => getAssignedReply(SEAT_TICKET_ID), {
+  const { data, isSuccess } = useQuery([ASSIGNED_REPLY, SEAT_TICKET_ID], () => getAssignedReply(SEAT_TICKET_ID), {
     onSuccess: () => {}
   })
   const { mutate } = useHandleReplyMutation();
