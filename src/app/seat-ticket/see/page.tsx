@@ -15,6 +15,8 @@ import { format } from '@/utils/date/formatter';
 import { useDatePicker } from '@/hooks/useDatePicker';
 import { appendOrNone } from '@/utils/filter';
 import { SEAT_TICKET_DATE_ID, SEAT_TICKET_ID, SEAT_TICKET_PLACE_ID, SEAT_TICKET_TIME_ID } from '@/constants/seatTicket';
+import { useDownloadExcel } from 'react-export-table-to-excel';
+import { useEffect, useRef } from 'react';
 
 const SeeSeatTicket = () => {
     const placeDropdown = useDropdown(PLACE);
@@ -39,7 +41,13 @@ const SeeSeatTicket = () => {
                 ...appendOrNone({ questionId: SEAT_TICKET_PLACE_ID, target: placeDropdown.value }),
                 ...appendOrNone({ questionId: SEAT_TICKET_TIME_ID, target: timeDropdown.value, operator: 'CONTAINS' })
             ]
-        }), {})
+        }), {});
+
+    const tableRef = useRef(null);
+    const { onDownload } = useDownloadExcel({
+        currentTableRef: tableRef.current,
+        filename: `이석증 (${datePicker.toString()})`
+    });
 
     return isSuccess && (
         <AppLayout title="이석증 확인하기">
@@ -94,11 +102,13 @@ const SeeSeatTicket = () => {
             </HeaderContainer>
             <ContentContainer>
                 <ButtonContainer>
-                    <Button size={'X_SMALL'} color={'white'} text={'엑셀 다운로드'}>
+                    <Button size={'X_SMALL'} color={'white'} text={'엑셀 다운로드'}
+                            onClick={onDownload}
+                    >
                         <Icon iconName={'Excel'} />
                     </Button>
                 </ButtonContainer>
-                <Table headTitle={seeSeatTicketTableHead}>
+                <Table ref={tableRef} headTitle={seeSeatTicketTableHead}>
                     {data.resultList.map(r => (
                         <TableRow>
                             <TableItem>{r.replyList[0].reply}</TableItem>
