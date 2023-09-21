@@ -6,11 +6,20 @@ export const useDatePicker = () => {
 
   const isRange = () => endDate != null;
 
+  const toString = () => {
+    if (isRange()) {
+      return `${selectedDate.toLocaleDateString()}~${endDate!.toLocaleDateString()}`;
+    }
+
+    return selectedDate.toLocaleDateString();
+  }
+
   return {
     selectedDate,
     setSelectedDate,
     endDate,
     setEndDate,
-    isRange
+    isRange,
+    toString
   }
 }
