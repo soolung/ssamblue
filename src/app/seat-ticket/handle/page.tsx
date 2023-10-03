@@ -1,7 +1,7 @@
 "use client";
 
 import AppLayout from '@/layouts/AppLayout';
-import { Button, Table, TableItem } from '@k99hyerin/dj-simblue';
+import { Button, Table, TableItem, TableRow } from '@k99hyerin/dj-simblue';
 import { useQuery } from 'react-query';
 import { getAssignedReply } from '@/interfaces/reply/api';
 import { ASSIGNED_REPLY } from '@/constants/queryKey';
@@ -20,7 +20,7 @@ const HandleSeatTicket = () => {
     <AppLayout title={"이석증 처리하기"}>
       <Table headTitle={handleSeatTicketTableHead}>
         {data.resultList.map(r => (
-          <>
+          <TableRow>
             <TableItem>{r.replyList[0].reply}</TableItem>
             <TableItem>{r.studentNumber}</TableItem>
             <TableItem>{r.name}</TableItem>
@@ -45,7 +45,7 @@ const HandleSeatTicket = () => {
                 />
               </ButtonContainer>
             </TableItem>
-          </>
+          </TableRow>
         ))
         }
       </Table>
