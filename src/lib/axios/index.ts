@@ -24,10 +24,14 @@ server.interceptors.response.use(
   },
   async (error) => {
     const { status, code, message } = error.response.data;
-    if (message && status === 401 && code === "EXPIRED_TOKEN") {
-      console.info(status, code, message)
-      await refreshExpiredToken();
+    if (status === 401 && code === "EXPIRED_TOKEN") {
+      refreshExpiredToken();
+    } else if (status === 401 && code === "INVALID_TOKEN") {
+      window.location.href = "/login";
+    } else if (status === 401 && code === "EMPTY_TOKEN") {
+      window.location.href = "/login";
     }
+
     return Promise.reject(error);
   }
 );
