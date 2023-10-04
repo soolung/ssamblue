@@ -13,7 +13,7 @@ export const refreshExpiredToken = async () => {
     Storage.setItem(ACCESS_KEY, data.accessToken);
   } catch {
     alert("다시 로그인 해주세요");
-    localStorage.clear();
     window.location.href = "/login";
+    localStorage.clear();
   }
 };
